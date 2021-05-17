@@ -7,10 +7,11 @@ export const Container = styled.div`
   padding: 50px;
 `;
 
-export const Button = styled.button`
+export const Button = styled("button")<{ selected: boolean }>`
   padding: 20px;
   border: solid gray;
   background-color: white;
+  background-color: ${(props) => (props.selected ? "gray" : "white")};
 
   &:hover {
     text-decoration: underline;
