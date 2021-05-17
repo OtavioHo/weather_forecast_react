@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
-  padding: 50px;
+  padding: 50px 0;
 `;
 
 export const Button = styled("button")<{ selected: boolean }>`
