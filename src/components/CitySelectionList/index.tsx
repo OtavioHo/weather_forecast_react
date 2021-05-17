@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 
-import cities from "../../constants/cities.json";
 import { Container, Button } from "./styles";
 
 interface CitySelectionListProps {
   onSelect: (woeid: number) => void;
+  cities: {
+    city: string;
+    woeid: number;
+  }[];
+  selectedCity: number;
 }
 
 export const CitySelectionList: React.FunctionComponent<CitySelectionListProps> =
-  ({ onSelect }) => {
-    const [selectedCity, setSelectedCity] = useState<number>(cities[0].woeid);
-
+  ({ cities, onSelect, selectedCity }) => {
     return (
       <Container>
         {cities.map(({ city, woeid }) => (
@@ -18,7 +20,6 @@ export const CitySelectionList: React.FunctionComponent<CitySelectionListProps> 
             key={woeid}
             selected={selectedCity === woeid}
             onClick={() => {
-              setSelectedCity(woeid);
               onSelect(woeid);
             }}
           >
