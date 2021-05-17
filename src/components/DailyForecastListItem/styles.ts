@@ -13,7 +13,7 @@ export const Title = styled.h2`
 `;
 
 export const WeatherIcon = styled.img`
-  width: 100%;
+  width: 60%;
   height: auto;
 `;
 
@@ -25,4 +25,8 @@ export const CurrentTemp = styled.h1`
 export const FlexContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
+`;
+
+export const InfoContainer = styled.div`
+  width: 80px;
 `;
