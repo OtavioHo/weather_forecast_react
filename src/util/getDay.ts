@@ -2,7 +2,7 @@ const getDay = (date: string): string => {
   const days = [
     "Monday",
     "Tuesday",
-    "Wednsday",
+    "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
