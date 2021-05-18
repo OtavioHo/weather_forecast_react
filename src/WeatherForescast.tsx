@@ -22,7 +22,7 @@ const WeatherForecast: React.FunctionComponent = () => {
   useEffect(() => {
     async function getForecast() {
       try {
-        const response = await weatherApi.get(`/${selectedCity}`);
+        const response = await weatherApi.get(`/api/location/${selectedCity}`);
         response.data.consolidated_weather.pop();
         setConsolidatedWeather(response.data.consolidated_weather);
       } catch (error) {
