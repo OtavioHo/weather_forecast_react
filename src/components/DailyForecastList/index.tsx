@@ -7,16 +7,20 @@ import IConsolidatedWeather from "../../interfaces/IConsolidatedWeather";
 
 interface DailyForecastListProps {
   consolidatedWeatherArray: IConsolidatedWeather[];
+  loading: boolean;
 }
 
 const DailyForecastList: React.FunctionComponent<DailyForecastListProps> = ({
   consolidatedWeatherArray,
+  loading,
 }) => {
   return (
     <Container>
-      {consolidatedWeatherArray.map((item) => (
-        <DailyForecastListItem key={item.id} {...item} />
-      ))}
+      {loading
+        ? "Loading..."
+        : consolidatedWeatherArray.map((item) => (
+            <DailyForecastListItem key={item.id} {...item} />
+          ))}
     </Container>
   );
 };

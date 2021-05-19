@@ -15,6 +15,9 @@ const WeatherForecast: React.FunctionComponent = () => {
     IConsolidatedWeather[]
   >([]);
 
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
   const onSelect = (woeid: number): void => {
     setSelectedCity(woeid);
   };
@@ -22,10 +25,15 @@ const WeatherForecast: React.FunctionComponent = () => {
   useEffect(() => {
     async function getForecast() {
       try {
+        setError(null);
+        setLoading(true);
         const response = await weatherApi.get(`/api/location/${selectedCity}`);
         response.data.consolidated_weather.pop();
         setConsolidatedWeather(response.data.consolidated_weather);
+        setLoading(false);
       } catch (error) {
+        setError("Error fetching data");
+        setLoading(false);
         console.log(error);
       }
     }
@@ -40,7 +48,14 @@ const WeatherForecast: React.FunctionComponent = () => {
         selectedCity={selectedCity}
         onSelect={onSelect}
       />
-      <DailyForecastList consolidatedWeatherArray={consolidatedWeather} />;
+      {error ? (
+        error
+      ) : (
+        <DailyForecastList
+          consolidatedWeatherArray={consolidatedWeather}
+          loading={loading}
+        />
+      )}
     </>
   );
 };
