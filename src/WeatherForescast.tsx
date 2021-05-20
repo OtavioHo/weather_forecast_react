@@ -28,7 +28,6 @@ const WeatherForecast: React.FunctionComponent = () => {
         setError(null);
         setLoading(true);
         const response = await weatherApi.get(`/api/location/${selectedCity}`);
-        response.data.consolidated_weather.pop();
         setConsolidatedWeather(response.data.consolidated_weather);
         setLoading(false);
       } catch (error) {
