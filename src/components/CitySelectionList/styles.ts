@@ -15,5 +15,6 @@ export const Button = styled("button")<{ selected: boolean }>`
 
   &:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
 `;
